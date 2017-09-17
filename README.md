@@ -1,4 +1,4 @@
-# Node / TypeScript / Express / Sass / MongoDB / Mocha / Chai / Grunt
+# Full JS web app start starter
 
 ## Install
 
@@ -10,7 +10,7 @@ And then run the grunt task to compile the TypeScript:
 
 `$ npm run grunt`
 
-## Starting
+## Start
 
 To start the server run:
 

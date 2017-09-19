@@ -24,6 +24,7 @@ export class BaseRoute {
     this.scripts = [];
   }
 
+
   /**
    * Add a JS external file to the request.
    *

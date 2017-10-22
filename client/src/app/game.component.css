@@ -1,0 +1,83 @@
+i {
+	color: #fff;
+    font-size: 10vw;
+    border: solid 4px;
+    width: 16vw;
+    height: 16vw;
+    line-height: 16vw;
+    border-radius: 50%;
+    margin: 0px 10px;	
+}
+
+button {
+	width: 28vw;
+    padding: 10px;
+    text-decoration: none;
+    background: #98D083;
+    border: solid 4px #fff;
+    color: #fff;
+    font-size: 2vw;
+    border-radius: 40px;
+    font-weight: bold;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+button:hover {
+    background: #fff;
+    color: #98D083;
+}
+
+h2 {
+    text-align: center;
+    height: 30px;
+    width: 100%;
+	opacity: 1;
+	transition: opacity .5s linear;
+}
+
+.locked {
+    background: #98D083 !important;
+    color: #fff !important;
+}
+
+.row {
+	padding: 20px 0px;
+}
+
+.end-game-row {
+    height: 100px;
+}
+
+.currentPick {
+	color: #98D083;
+	background: #fff;
+	border-color: #fff;
+}
+
+.disablePick {
+	display: none;
+}
+
+.hideStatus {
+	opacity: 0;
+}
+
+.oponentPick {
+	color: #fff;
+    font-size: 1.5em;
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+
+	i {
+	    font-size: 6vw;
+	    width: 10vw;
+	    height: 10vw;
+	    line-height: 10vw;
+	}
+
+}

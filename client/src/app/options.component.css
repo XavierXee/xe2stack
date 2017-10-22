@@ -1,0 +1,23 @@
+button {
+	width: 34vw;
+    padding: 10px;
+    text-decoration: none;
+    background: #98D083;
+    border: solid 4px #fff;
+    color: #fff;
+    font-size: 2vw;
+    border-radius: 40px;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.row {
+	padding: 20px 0px;
+}
+
+.activeOption {
+	color: #98D083;
+	background: #fff;
+}

@@ -6,23 +6,9 @@ import * as path from "path";
 import errorHandler = require("errorhandler");
 import methodOverride = require("method-override");
 
-import mongoose = require("mongoose"); //import mongoose
-
-
-import { DBConnector } from "./core/db_connector"; 
-
 //routes
 import { IndexRoute } from "./routes/index";
-
-//interfaces
-import { IUser } from "./interfaces/i_user"; //import IUser
-
-//models
-import { IModel } from "./models/model"; //import IModel
-import { IUserModel } from "./models/user"; //import IUserModel
-
-//schemas
-import { userSchema } from "./schemas/user"; //import userSchema
+import { GameRoute } from "./routes/game";
 
 /**
  * The server.
@@ -32,8 +18,6 @@ import { userSchema } from "./schemas/user"; //import userSchema
 export class Server {
 
   public app: express.Application;
-
-  private model: IModel; //an instance of IModel
 
   /**
    * Bootstrap the application.
@@ -54,8 +38,6 @@ export class Server {
    * @constructor
    */
   constructor() {
-    //instance defaults
-    this.model = Object(); //initialize this to an empty object
 
     //create expressjs application
     this.app = express();
@@ -88,13 +70,9 @@ export class Server {
    */
   public config() {
 
-    const MONGODB_CONNECTION: string =  DBConnector.getConnectionString(0);
-    console.log(MONGODB_CONNECTION);
-
     //add static paths
     this.app.use(express.static(path.join(__dirname, "public")));
-
-    //configure pug
+    
     this.app.set("views", path.join(__dirname, "views"));
     this.app.set("view engine", "pug");
 
@@ -117,13 +95,6 @@ export class Server {
 
     //use q promises
     global.Promise = require("q").Promise;
-    mongoose.Promise = global.Promise;
-
-    //connect to mongoose
-    let connection: mongoose.Connection = mongoose.createConnection(MONGODB_CONNECTION);
-
-    //create models
-    this.model.user = connection.model<IUserModel>("User", userSchema);
 
     // catch 404 and forward to error handler
     this.app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -148,6 +119,9 @@ export class Server {
 
     //IndexRoute
     IndexRoute.create(router);
+
+    //GameRoute
+    GameRoute.create(router);
 
     //use router middleware
     this.app.use(router);

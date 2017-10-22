@@ -1,0 +1,22 @@
+<div class="row">
+  <i 
+    class="fa fa-hand-{{weapon.name}}-o" 
+    aria-hidden="true"
+    *ngFor="let weapon of weapons" 
+    [class.currentPick]="weapon.id==currentPick.id"
+    [class.disablePick]="(weapon.id==4 || weapon.id==5) && !options._lizardSpockMode"
+    (click)="pick(weapon)">
+  </i>
+</div>
+<div class="row">
+  <button [class.locked]="lock" class="btn btn-success" (click)="play()">Play !</button>
+</div>
+<div class="row end-game-row">
+  <h2 *ngIf="oponentPick" [class.hideStatus]="!endGameStatus">
+	  <i 
+    	class="fa fa-hand-{{oponentPick.name}}-o oponentPick" 
+    	aria-hidden="true">
+  	</i>
+  	<span>{{endGameStatus}}</span>
+  </h2>
+</div>

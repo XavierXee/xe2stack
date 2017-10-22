@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { BaseRoute } from "./router";
+import { GameManager } from "../core/game_manager";
 
 // import { Router } from "router";
 
@@ -10,7 +11,7 @@ import { BaseRoute } from "./router";
 *
 * @class IndexRoute
 */
-export class IndexRoute extends BaseRoute {
+export class GameRoute extends BaseRoute {
 
     /**
     * Create the routes.
@@ -21,11 +22,11 @@ export class IndexRoute extends BaseRoute {
     */
     public static create(router: Router) {
         //log
-        console.log("[IndexRoute::create] Creating index route.");
+        console.log("[IndexRoute::create] Creating game route.");
 
         //add home page route
-        router.get("/", (req: Request, res: Response, next: NextFunction) => {
-            new IndexRoute().index(req, res, next);
+        router.get("/game", (req: Request, res: Response, next: NextFunction) => {
+            new GameRoute().index(req, res, next);
         });
       }
 
@@ -58,7 +59,7 @@ export class IndexRoute extends BaseRoute {
         };
 
         //render template
-        this.render(req, res, "index", options);
+        this.send(req, res, GameManager.game(req.query.player, req.query._lizardSpockMode));
     }
     
 }

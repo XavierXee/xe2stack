@@ -16,6 +16,18 @@ module.exports = function(grunt) {
             cwd: "./views",
             src: ["**"],
             dest: "./dist/views"
+          },
+          {
+            expand: true,
+            cwd: "./client/dist",
+            src: ["*.html"],
+            dest: "./dist/views"
+          },
+          {
+            expand: true,
+            cwd: "./client/dist",
+            src: ["*.js", "*.js.map", "!*.html"],
+            dest: "./dist/public"
           }
         ]
       }

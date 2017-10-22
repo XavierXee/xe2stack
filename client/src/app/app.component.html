@@ -1,0 +1,25 @@
+<div style="text-align:center">
+  <h1>
+    Play {{title}} now !
+  </h1>
+  <game (onPlay)="update($event)" [options]='options'></game>
+  <options (onChange)="updateOptions($event)" [options]='options'></options>
+  <div id="history">
+    <div><h2>History</h2></div>
+    <ul>
+      <li *ngFor="let playedGame of gamesHistory">
+        <div class="date">{{playedGame.date}}</div>
+        <div>
+          <i *ngIf="playedGame.remote" class="fa fa-wifi" aria-hidden="true"></i>
+          <i *ngIf="playedGame.lizardspock" class="fa fa-hand-lizard-o" aria-hidden="true"></i>
+          <i *ngIf="playedGame.lizardspock" class="fa fa-hand-spock-o" aria-hidden="true"></i>
+          <span>{{playedGame.player.name}}</span>
+          <span>&nbsp;vs&nbsp;</span>
+          <span>{{playedGame.oponent.name}}</span>
+          <span>&nbsp;&rarr;&nbsp;</span>
+          <span>{{playedGame.status}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
